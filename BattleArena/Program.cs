@@ -13,14 +13,20 @@ namespace BattleArena
         static void Main(string[] args)
         {
             Warrior Raymond = new Warrior("Raymond", 100, 30);
-            Warrior Kirk    = new Warrior("Kirk", 200, 15);
-            Warrior Crisy    = new Warrior("Crisy", 150, 25);
+            Warrior Kirk = new Warrior("Kirk", 200, 15);
+            Warrior Crisy = new Warrior("Crisy", 150, 25);
+
+
+
 
             Console.WriteLine($"{Raymond.Name} has " +
                 $"{Raymond.Health} health and {Raymond.AttackPower} attack power.");
             Console.WriteLine("---------------------------------");
             Console.WriteLine($"{Kirk.Name} has" +
                 $" {Kirk.Health} health and {Kirk.AttackPower} attack power.");
+            Console.WriteLine("---------------------------------");
+            Console.WriteLine($"{Crisy.Name} has" +
+                $" {Crisy.Health} health and {Crisy.AttackPower} attack power.");
             Console.WriteLine("---------------------------------");
             Console.WriteLine($"{Crisy.Name} has" +
                 $" {Crisy.Health} health and {Crisy.AttackPower} attack power.");
