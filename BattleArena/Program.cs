@@ -1,16 +1,21 @@
 ﻿using BattleArena.Warriors;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BattleArena
 {
+
     internal class Program
     {
         static void Main(string[] args)
         {
             int round = 1;
-            Warrior Raymond = new Warrior("Raymond", 100, 30, "Dinuraan");
-            Warrior Kirk = new Warrior("Kirk", 200, 15, "Dinaganan");
-            Warrior Crisy = new Warrior("Crisy", 150, 30, "Fire Ball");
+            var Raymond = new Marksman("Raymond", 100, 30);
+            var Kirk = new Fighter("Kirk", 200, 15);
+            var Crisy = new Tank("Crisy", 150, 30);
 
             Raymond.DisplayStats();
             Kirk.DisplayStats();
@@ -18,11 +23,11 @@ namespace BattleArena
 
             while (Raymond.IsAlive && Kirk.IsAlive && Crisy.IsAlive)
             {
-                Console.WriteLine($"------Round {round}------");
+
                 Raymond.Attack(Kirk);
-                Kirk.Attack(Crisy);
+                Console.WriteLine("----------------------------------------------");
                 Crisy.Attack(Raymond);
-                Console.WriteLine("----------------");
+                Console.WriteLine("----------------------------------------------");
                 round++;
             }
 
