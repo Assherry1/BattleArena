@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace BattleArena
@@ -13,23 +12,9 @@ namespace BattleArena
     {
         static void Main(string[] args)
         {
-            Warrior Raymond = new Warrior();
-            Raymond.Name = "Raymond";
-            Raymond.Health = 100;
-            Raymond.AttackPower = 30;
-
-
-            Warrior Kirk = new Warrior();
-            Kirk.Name = "Kirk";
-            Kirk.Health = 200;
-            Kirk.AttackPower = 15;
-
-
-            Warrior Cods = new Warrior();
-            Cods.Name = "Cods";
-            Cods.Health = 150;
-            Cods.AttackPower = 25;
-
+            Warrior Raymond = new Warrior("Raymond", 100, 30);
+            Warrior Kirk    = new Warrior("Kirk", 200, 15);
+            Warrior Crisy    = new Warrior("Crisy", 150, 25);
 
             Console.WriteLine($"{Raymond.Name} has " +
                 $"{Raymond.Health} health and {Raymond.AttackPower} attack power.");
@@ -37,8 +22,8 @@ namespace BattleArena
             Console.WriteLine($"{Kirk.Name} has" +
                 $" {Kirk.Health} health and {Kirk.AttackPower} attack power.");
             Console.WriteLine("---------------------------------");
-            Console.WriteLine($"{Cods.Name} has" +
-                $" {Cods.Health} health and {Cods.AttackPower} attack power.");
+            Console.WriteLine($"{Crisy.Name} has" +
+                $" {Crisy.Health} health and {Crisy.AttackPower} attack power.");
             Console.WriteLine("---------------------------------");
             Console.ReadKey();
         }
