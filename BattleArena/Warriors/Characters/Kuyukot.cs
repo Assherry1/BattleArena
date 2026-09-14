@@ -1,22 +1,51 @@
-﻿using System;
+﻿using BattleArena.Abilities;
+using BattleArena.Combat;
+using BattleArena.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BattleArena.Warriors.Characters
 {
-    public class Kuyukot : Warrior
+    public class Kuyukot : Warrior, IHealCaster
     {
-        public Kuyukot(int health, int attackPower)
-            : base("Kuyukot", health, attackPower, WarriorType.Magery)
+        public int HealingAmount { get; set; }
+        public Kuyukot(int health, int attackPower, WarriorType warriorType, TeamType teamType, int healingAmount)
+            : base("Kuyukot", health, attackPower, WarriorType.Magery, teamType)
         {
-
+            HealingAmount = healingAmount;
         }
 
         public override void Attack(Warrior target)
         {
-            throw new NotImplementedException();
+            var dmginfo = new DamageInfo(AttackPower, "Mamen", HasCriticalChance, this);
+
+            Console.WriteLine($"\t->{Name}: Tatagos kaba {target.Name}");
+
+            Thread.Sleep(1000);
+            if (target.IsAlive)
+                Console.WriteLine($"\t->{target.Name}: {target.Name} asa ka boi {target.Name}");
         }
+
+        public void HealTeamMates(List<Warrior> teamMates)
+        {
+            foreach (var warrior in teamMates)
+            {
+                warrior.ReceiveHeal(HealingAmount, this);
+                if (warrior.IsAlive && warrior.TeamType == TeamType)
+                {
+                    Console.WriteLine($"->{Name}: Sayang, patay na si {warrior.Name}!");
+                    warrior.ReceiveHeal(HealingAmount, this);
+                }
+                else
+                    Console.WriteLine($"->{Name}:Sayang, patay na si {warrior.Name}." +
+                        $"Hindi ko na sya mahaplos");
+            }
+        }
+
     }
 }

@@ -1,33 +1,40 @@
-﻿using System;
+﻿using BattleArena.Combat;
+using BattleArena.Enums;
+using System;
 using System.Threading;
-using System.Xml.Linq;
 
 namespace BattleArena.Warriors
 {
     public class Chris : Warrior
     {
-        public int ClickDamage { get; private set; }
-        public Chris(int health, int attackPower, int arrowDamage)
-            : base("Chris", health, attackPower, WarriorType.Marksman)
+        public int ClickDamage { get; set; }
+
+        public Chris(int health, int attackPower)
+            : base("Chris", health, attackPower, WarriorType.Marksman, TeamType.A)
         {
-            ClickDamage = arrowDamage;
             attackPower += ClickDamage;
         }
 
+
         public override void Attack(Warrior target)
         {
-            var dmginfo = new DamageInfo(AttackPower, "Click", HasCriticalChance);
+            var dmginfo = new DamageInfo(AttackPower, "Mabisa", HasCriticalChance, this);
             TakeDamage(dmginfo);
 
-            Console.WriteLine($"->{Name}: Click kita bebe {target.Name}!");
+            Thread.Sleep(1000);
+            Console.WriteLine($"\t->{Name}: Tagalog vs Bisaya {target.Name}");
 
             Thread.Sleep(1000);
-            Console.WriteLine($"->{target.Name}: Yamot!");
+            Console.WriteLine($"\t->{target.Name}: Bang");
 
             Thread.Sleep(1000);
             if (target.IsAlive)
-                Console.WriteLine($"->{target.Name}: eclipse {target.Name}");
-        }
-    }
+                Console.WriteLine($"\t->{target.Name}: {target.Name} yoko na! {target.Name}");
 
+
+
+        }
+
+
+    }
 }
